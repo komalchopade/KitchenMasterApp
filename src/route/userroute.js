@@ -7,7 +7,7 @@ const express = require('express');
     router.get('/:id', UserController.getUserById);
     router.put('/:id', UserController.updateUser);                     
     router.delete('/:id', UserController.deleteUser);
-    router.post('/user/register', UserController.registerUser);
+    router.post('/register', UserController.registerUser);
     
 
    // router.post('/user',UserController.registerUser);

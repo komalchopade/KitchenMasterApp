@@ -2,11 +2,14 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const UserRoutes = require('./src/route/userroute');
+const productRoutes = require('./src/route/productroute');
+const cors = require('cors');
 
 const app = express();
 
 // Middleware
 app.use(bodyParser.json());
+app.use(cors({origin:'http://127.0.0.1:5500'}));
 
 // Connect to MongoDB
 mongoose.connect('mongodb://localhost:27017/mynewdb', {
@@ -22,6 +25,10 @@ db.once('open', function() {
 
 // Use the UserRoutes
 app.use('/users', UserRoutes);
+
+//Use the productRoutes
+app.use('/product',productRoutes);
+
 
 // Define a simple route
 app.get('/', (req, res) => {
